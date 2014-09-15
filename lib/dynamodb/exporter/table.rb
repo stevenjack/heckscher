@@ -20,6 +20,8 @@ module Dynamodb
             @start_key = last_key_from s
           end
         end
+
+        @contents
       end
 
       protected
