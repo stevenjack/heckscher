@@ -1,4 +1,5 @@
 require 'aws-sdk'
+require 'yaml'
 
 module Dynamodb
   module Exporter
@@ -15,7 +16,7 @@ module Dynamodb
         @start_key  = true
       end
 
-      def run
+      def run!
         while @start_key do
           scan.tap do |s|
             @contents << contents_from(s)
@@ -26,6 +27,10 @@ module Dynamodb
         @contents
       end
 
+      def write
+        File.open('out.yaml', 'w') {|f| f.write @contents.to_yaml }
+      end
+
       protected
 
       def scan
@@ -33,7 +38,7 @@ module Dynamodb
       end
 
       def last_key_from(scan)
-        scan["LastEvaluatedKey"]["HashKeyElement"]
+        scan["LastEvaluatedKey"]
       end
 
       def contents_from(scan)
