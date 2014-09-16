@@ -5,11 +5,11 @@ module Dynamodb
   module Exporter
     class Export
 
-      attr_reader :table_name, :contents, :limit
+      attr_reader :table_name, :contents, :rate
 
-      def initialize(table_name, limit)
+      def initialize(table_name, rate)
         @table_name = table_name
-        @limit      = limit
+        @rate       = rate
         @ddb        = ::AWS::DynamoDB::Client.new(:api_version => '2011-12-05')
 
         @contents   = []
@@ -22,6 +22,8 @@ module Dynamodb
             @contents << contents_from(s)
             @start_key = last_key_from s
           end
+
+          sleep 1
         end
 
         @contents
@@ -48,7 +50,7 @@ module Dynamodb
       def options_with(limit, start_key = nil)
         {
           :table_name => table_name,
-          :limit => limit,
+          :limit => rate,
         }.tap do |o|
           o[:exclusive_start_key] = start_key if start_key.is_a? Hash
         end
