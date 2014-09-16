@@ -35,6 +35,14 @@ module Dynamodb
 
       protected
 
+      def read_capacity
+        table_meta["Table"]["ProvisionedThroughput"]["ReadCapacityUnits"]
+      end
+
+      def table_meta
+        @table_meta ||= @ddb.describe_table( :table_name => table_name )
+      end
+
       def scan
         @ddb.scan options_with(limit, @start_key)
       end
