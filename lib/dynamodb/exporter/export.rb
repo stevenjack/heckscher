@@ -44,7 +44,7 @@ module Dynamodb
       end
 
       def scan
-        @ddb.scan options_with(limit, @start_key)
+        @ddb.scan options_with @start_key
       end
 
       def last_key_from(scan)
@@ -55,10 +55,10 @@ module Dynamodb
         scan["Items"]
       end
 
-      def options_with(limit, start_key = nil)
+      def options_with(start_key = nil)
         {
           :table_name => table_name,
-          :limit => rate,
+          :limit => rate.to_i,
         }.tap do |o|
           o[:exclusive_start_key] = start_key if start_key.is_a? Hash
         end

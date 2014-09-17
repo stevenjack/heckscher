@@ -1,5 +1,6 @@
 require 'thor'
 require 'dynamodb/exporter/export'
+require 'json'
 
 module Dynamodb
   module Exporter
@@ -17,7 +18,9 @@ module Dynamodb
         say 'Begining export...', :white
 
         contents = Export.new(table_name, options[:read_ratio]).run!
-        File.open(options[:output]).write(contents)
+        File.open(options[:output], 'w') do |file|
+          file.write(JSON::generate(contents))
+        end
 
         say 'Export complete', :green
       end
