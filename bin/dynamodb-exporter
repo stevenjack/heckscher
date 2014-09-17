@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$: << File.absolute_path('lib')
+
+require 'dynamodb/exporter/app'
+
+Dynamodb::Exporter::App.start
