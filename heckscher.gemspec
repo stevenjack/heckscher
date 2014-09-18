@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'dynamodb/exporter/version'
+require 'heckscher/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "dynamodb-exporter"
-  spec.version       = Dynamodb::Exporter::VERSION
+  spec.name          = "heckscher"
+  spec.version       = Heckscher::VERSION
   spec.authors       = ["Steven Jack"]
   spec.email         = ["stevenmajack@gmail.com"]
   spec.summary       = %q{Exports data from dynamodb into JSON/YAML}
   spec.description   = %q{Allows you to export the data from a dynamodb table to JSON}
-  spec.homepage      = "https://www.github.com/stevenjack/dynamodb-exporter"
+  spec.homepage      = "https://www.github.com/stevenjack/heckscher"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
