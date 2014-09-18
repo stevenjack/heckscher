@@ -1,6 +1,10 @@
 # Dynamodb::Exporter
 
-TODO: Write a gem description
+The general way to export or make a backup of data from DynamoDB is to use data pipeline. 
+
+If you want a simple way of extracting the contents of your table to a file at a predetermined rate then this is the gem for you.
+
+The contents of the table is exported to file with each line representing a row in the table.
 
 ## Installation
 
@@ -18,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to make sure that your credentials are set in the ENV variables before running the app:
+
+```bash
+AWS_ACCESS_KEY_ID='bob'
+AWS_SECRET_ACCESS_KEY='bob'
+AWS_REGION='eu-west-1'
+```
+
+Currently there's only one command, and as it's a thor app you can use the help method to find out the parameters needed:
+
+```bash
+dynamodb-exporter help
+```
 
 ## Contributing
 
