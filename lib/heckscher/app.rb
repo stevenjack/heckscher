@@ -30,6 +30,9 @@ module Heckscher
       handle.close
 
       say "\n\nExport complete", :green
+
+    rescue Exception => e
+      raise Thor::Error, set_color(e.message, :red)
     end
 
   end
