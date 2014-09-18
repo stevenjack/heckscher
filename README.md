@@ -1,4 +1,4 @@
-# Dynamodb::Exporter
+# Heckscher
 
 The general way to export or make a backup of data from DynamoDB is to use data pipeline. 
 
@@ -10,7 +10,7 @@ The contents of the table is exported to file with each line representing a row 
 
 Add this line to your application's Gemfile:
 
-    gem 'dynamodb-exporter'
+    gem 'heckscher'
 
 And then execute:
 
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install dynamodb-exporter
+    $ gem install heckscher
 
 ## Usage
 
@@ -33,12 +33,12 @@ AWS_REGION='eu-west-1'
 Currently there's only one command, and as it's a thor app you can use the help method to find out the parameters needed:
 
 ```bash
-dynamodb-exporter help
+heckscher help
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/stevenjack/dynamodb-exporter/fork )
+1. Fork it ( https://github.com/stevenjack/heckscher/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
