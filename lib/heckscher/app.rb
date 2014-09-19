@@ -38,7 +38,7 @@ module Heckscher
     desc 'import [table_name] [import_location]', 'Imports the contents from a json dump into DynamoDB'
     method_option :read_ratio, :type => :numeric, :desc => 'The percentage of read capacity to use (out of 100)', :default => '10'
     method_option :limit, :type => :numeric, :desc => 'How many results to add per request', :default => 20
-    def export(table_name, import_location)
+    def import(table_name, import_location)
       say 'Begining import...', :white
 
       handle = File.open(import_location, 'r')
