@@ -1,5 +1,6 @@
 require 'thor'
 require 'heckscher/export'
+require 'heckscher/reader'
 require 'heckscher/import'
 require 'json'
 
@@ -41,10 +42,14 @@ module Heckscher
     def import(table_name, import_location)
       say 'Begining import...', :white
 
-      handle = File.open(import_location, 'r')
-      import = Import.new(table_name, options[:limit], handle)
+      reader = Reader.new(import_location, options[:limit])
+      import = Import.new(reader, table_name, options[:read_ratio])
 
       import.run!
+
+      begin
+        say "~#{import.percentage_done}% (#{export.items_put})\e[1A"
+      end until import.percentage_done >= 100
 
       say "\n\nImport complete", :green
 
