@@ -35,7 +35,7 @@ module Heckscher
       raise Thor::Error, set_color(e.message, :red)
     end
 
-    desc 'import [table_name] [import_location]', 'Exports the contents of the given table to a json dump'
+    desc 'import [table_name] [import_location]', 'Imports the contents from a json dump into DynamoDB'
     method_option :read_ratio, :type => :numeric, :desc => 'The percentage of read capacity to use (out of 100)', :default => '10'
     method_option :limit, :type => :numeric, :desc => 'How many results to add per request', :default => 20
     def export(table_name, import_location)
