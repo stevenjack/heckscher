@@ -1,5 +1,5 @@
 module Hecksher
-  class Read
+  class Reader
     attr_reader :filename, :limit
 
     def initialize(filename, limit)
@@ -26,3 +26,4 @@ module Hecksher
     end
   end
 end
+
